@@ -5,9 +5,11 @@ https://github.com/jquery/jquery-mobile/issues/2520
 
 Please see the branches of this project to see the different behaviour.
 
-## jquery-mobile 1.0b1
+## jquery-mobile 1.0rc1 - with DOM caching
 
-In this branch, pages are cached, but are removed from the cache as soon as another one is shown. This strategy works well.
+In this branch, pages are cached and are removed from the cache as soon as another one is shown. This strategy, which worked in 1.0b1, doesn't work in 1.0rc1. A blank page will be shown when navigating back to a page that's already been shown.
+
+For example, load Page A, then Page B, then Page A again (it won't be loaded).
 
 ## MIT LICENSE
 
