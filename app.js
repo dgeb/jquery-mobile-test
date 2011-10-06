@@ -1,10 +1,10 @@
 $(document).bind("mobileinit", function() {
-  $.mobile.page.prototype.options.domCache = true;
+  $.mobile.page.prototype.options.domCache = false;
 });
 
-$(document).bind('pageshow',function(event, ui) {
-  if (ui.prevPage) ui.prevPage.remove();
-});
+//$(document).bind('pageshow',function(event, ui) {
+//  if (ui.prevPage) ui.prevPage.remove();
+//});
 
 $(document).bind('pagecreate',function(event, ui) {
   var now = new Date();
