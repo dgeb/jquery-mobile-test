@@ -2,7 +2,7 @@ $(document).bind("mobileinit", function() {
   $.mobile.page.prototype.options.domCache = true;
 });
 
-$('div').live('pageshow',function(event, ui) {
+$(document).bind('pageshow',function(event, ui) {
   if (ui.prevPage) ui.prevPage.remove();
 });
 

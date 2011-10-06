@@ -5,6 +5,10 @@ https://github.com/jquery/jquery-mobile/issues/2520
 
 Please see the branches of this project to see the different behaviour.
 
+## jquery-mobile 1.0b1
+
+In this branch, pages are cached, but are removed from the cache as soon as another one is shown. This strategy works well.
+
 ## MIT LICENSE
 
 Copyright (c) 2011 Dan Gebhardt
