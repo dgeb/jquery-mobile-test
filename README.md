@@ -5,11 +5,14 @@ https://github.com/jquery/jquery-mobile/issues/2520
 
 Please see the branches of this project to see the different behaviour.
 
-## jquery-mobile 1.0rc1 - without DOM caching
+## jquery-mobile 1.0_latest - with selective DOM caching
 
-In this branch, pages are not cached and therefore shouldn't need to be removed. However, the initial page that's loaded will never be refreshed.
+This branch was created after jblas landed the following fix:
+https://github.com/jquery/jquery-mobile/commit/97e3f8a800a44227ceff13d1c825953a051ef782
 
-For example, load Page A, then Page B, and then return to Page A. You'll notice that the page loaded time doesn't change, nor does the navbar highlight.
+In this branch, pages are selectively cached using the data-dom-cache attribute on each page. A custom pageshow event handler determines whether to remove the previous page. Caching should not be dependent upon which pages are embedded when the first page loads.
+
+In this particular example, page C is the only page that should be cached.
 
 ## MIT LICENSE
 

@@ -1,9 +1,5 @@
-$(document).bind("mobileinit", function() {
-  $.mobile.page.prototype.options.domCache = false;
-});
-
-//$(document).bind('pageshow',function(event, ui) {
-//  if (ui.prevPage) ui.prevPage.remove();
+//$(document).bind("mobileinit", function() {
+//  $.mobile.page.prototype.options.domCache = true;
 //});
 
 $(document).bind('pagecreate',function(event, ui) {
@@ -18,3 +14,12 @@ $(document).bind('pagecreate',function(event, ui) {
   page.find('.load-time').text(hours + ":" + minutes + ":" + seconds);
 });
 
+$(document).bind('pageshow',function(event, ui) {
+  var prevPage = ui.prevPage ;
+  if (ui.prevPage && !shouldPageBeCached(ui.prevPage))
+    ui.prevPage.remove();
+});
+
+function shouldPageBeCached(page) {
+  return page.attr("data-dom-cache") != "false" || $.mobile.page.prototype.options.domCache;
+}
