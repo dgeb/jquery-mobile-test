@@ -1,8 +1,4 @@
-//$(document).bind("mobileinit", function() {
-//  $.mobile.page.prototype.options.domCache = true;
-//});
-
-$(document).bind('pagecreate',function(event, ui) {
+$(document).bind("pagecreate", function(event, ui) {
   var now = new Date();
   var hours = now.getHours();
   var minutes = now.getMinutes();
@@ -11,15 +7,15 @@ $(document).bind('pagecreate',function(event, ui) {
   if (seconds < 10) seconds = "0" + seconds;
   
   var page = $(event.target);
-  page.find('.load-time').text(hours + ":" + minutes + ":" + seconds);
+  page.find(".load-time").text(hours + ":" + minutes + ":" + seconds);
 });
 
-$(document).bind('pageshow',function(event, ui) {
-  var prevPage = ui.prevPage ;
-  if (ui.prevPage && !shouldPageBeCached(ui.prevPage))
-    ui.prevPage.remove();
-});
+$(document).bind("pageshow", function(event, ui) {
+  var prevPage = ui.prevPage;
+  if (prevPage && prevPage.attr("data-dom-cache") != "true")
+    prevPage.remove();
 
-function shouldPageBeCached(page) {
-  return page.attr("data-dom-cache") != "false" || $.mobile.page.prototype.options.domCache;
-}
+  // highlight the current nav button (necessary when re-loading cached pages)
+  var page = $(event.target);
+  page.find("#" + page.attr("data-id")).addClass("ui-btn-active");
+});
